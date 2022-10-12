@@ -25,20 +25,26 @@ the same background colour as the <body> element
 body {
   display: flex;
   flex-direction: column;
-  padding: 1.5em;
-  color: #545149;
+  color: #5f5c53;
   background-color: #f4f1ec;
   font-family: "Source Sans Pro";
   font-weight: light;
-  font-size: 18px;
 }
 
 nav {
   font-family: "Bungee";
 }
 
+.tweet-text {
+  background: transparent;
+  font-size: 1rem;
+  color: #5f5c53;
+  border-bottom-width: thick;
+}
+
 .container {
   display: flex;
+  flex-direction: column;
   width: 90%;
   justify-content: space-evenly;
   align-self: center;

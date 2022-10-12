@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#tweet-text").on("input", function () {
+  $(".tweet-text").on("input", function () {
     let charCount = $(this).val().length;
     let newCount = 140 - charCount;
     const counter = $(this).parent().find(".counter");
@@ -11,7 +11,7 @@ $(document).ready(function () {
     if (newCount <= 0) {
       counter.css("color", "red");
     } else {
-      counter.css("color", "gray");
+      counter.css("color", "dark gray");
     }
   });
 });

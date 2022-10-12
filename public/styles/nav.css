@@ -12,10 +12,9 @@ nav {
   justify-content: space-between;
   position: fixed;
   top: 0;
-  height: 120px;
+  height: 100px;
   width: 100%;
   padding: 1.5em;
-  color: #FFF;
-  background-color: #4056A1;
-
+  color: #fff;
+  background-color: #4056a1;
 }

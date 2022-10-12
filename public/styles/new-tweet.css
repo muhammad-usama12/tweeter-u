@@ -13,14 +13,13 @@ form {
   display: flex;
   flex-direction: column;
   align-content: center;
-  background-color: #f4f1ec;
+  background: #f4f1ec;
   width: 97%;
   font-weight: bold;
 }
 
-textarea:after {
-  background: #f4f1ec;
-  border-bottom: thick double #32a1ce;
+textarea:focus {
+  background: transparent;
   font-family: "Source Sans Pro";
   font-weight: bolder;
 }
