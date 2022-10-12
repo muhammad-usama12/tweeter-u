@@ -1,0 +1,43 @@
+/* new-tweet */
+
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Source Sans Pro";
+  font-weight: lighter;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  background-color: #f4f1ec;
+  width: 97%;
+  font-weight: bold;
+}
+
+textarea:after {
+  background: #f4f1ec;
+  border-bottom: thick double #32a1ce;
+  font-family: "Source Sans Pro";
+  font-weight: bolder;
+}
+
+.form-bottom {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1px;
+  font-family: "Bungee";
+}
+
+button {
+  background-color: #4056a1;
+  color: #ffffff;
+  position: relative;
+  top: 6px;
+  font-family: "Bungee";
+  padding-top: -2px;
+  padding-bottom: 0px;
+}

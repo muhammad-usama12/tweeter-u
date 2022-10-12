@@ -6,7 +6,9 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -14,12 +16,33 @@ html {
  * Global layout stuff
  */
 
+/*
+ 90% of the width of its parent element
+center aligned to the body
+the same background colour as the <body> element
+*/
+
 body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
   color: #545149;
   background-color: #f4f1ec;
-  font-size: 24px;
+  font-family: "Source Sans Pro";
+  font-weight: light;
+  font-size: 18px;
 }
 
+nav {
+  font-family: "Bungee";
+}
+
+.container {
+  display: flex;
+  width: 90%;
+  justify-content: space-evenly;
+  align-self: center;
+}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
