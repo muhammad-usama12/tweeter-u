@@ -12,13 +12,19 @@ Add the icons in the lower-right corner (you can look for them at Font Awesome)
 
 
 */
+#tweets-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 6%;
+  padding-right: 6%;
+}
 
 .tweet {
   display: flex;
   flex-direction: column;
   margin-top: 1.5em;
   border: solid #000;
-  border-radius: 5px;
+  border-radius: 7px;
 }
 
 /* .tweet div h2 {
@@ -31,9 +37,6 @@ Add the icons in the lower-right corner (you can look for them at Font Awesome)
   padding-right: 1em;
 } */
 
-.tweet h2 {
-  font-weight: lighter;
-}
 .tweet header {
   display: flex;
   justify-content: space-between;
@@ -58,11 +61,19 @@ Add the icons in the lower-right corner (you can look for them at Font Awesome)
 }
 
 .user {
-  display: flex;
-  justify-content: flex-end;
-
-  color: #afafaf;
+  color: #948d8d;
   visibility: hidden;
+}
+.tweet:hover .user {
+  visibility: visible;
+}
+
+.fa-light {
+  padding-right: 1.5em;
+  padding-left: 0.5em;
+}
+.fa-light:hover {
+  color: rgb(255, 145, 0);
 }
 
 .fas {
@@ -79,9 +90,6 @@ Add the icons in the lower-right corner (you can look for them at Font Awesome)
   color: red;
 }
 
-.tweet:hover {
+article.tweet:hover {
   box-shadow: 8px 8px #dadcea;
-}
-.tweet:hover .user {
-  visibility: visible;
 }
