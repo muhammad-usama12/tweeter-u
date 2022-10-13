@@ -1,4 +1,11 @@
 $(document).ready(function () {
+  // Cross-Site Scripting Prevention
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   renderTweets = function (tweets) {
     $("#tweets-container").html("");
     for (let tweet of tweets) {
@@ -19,7 +26,7 @@ $(document).ready(function () {
     }</h2>
             <h3 class="user">${tweetObj.user.handle}</h3>
           </header>
-          <p>${tweetObj.content.text}</p>
+          <p>${escape(tweetObj.content.text)}</p>
           <footer>
             <div> ${timeago.format(tweetObj.created_at)} </div>
             <div>
