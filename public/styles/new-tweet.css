@@ -40,3 +40,9 @@ button {
   padding-top: -2px;
   padding-bottom: 0px;
 }
+
+#error p {
+  color: red;
+  font-size: 20pt;
+  border: solid red;
+}
