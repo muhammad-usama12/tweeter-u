@@ -39,18 +39,20 @@ $(document).ready(function () {
     return $tweet;
   };
 
-  // $("timeago").timeago();
-
-  $("#new-tweet").on("submit", function (event) {
+  $("#new-tweet-sub").on("submit", function (event) {
     event.preventDefault();
     const seralizedData = $(this).serialize();
     const charCount = Number($(this).parent().find(".counter").val());
     if (charCount < 0) {
-      return alert("This tweet has reached max characters allowed per tweet");
+      const message =
+        "<p class='error'><i class='fas fa-exclamation-triangle'></i>This tweet has reached max characters allowed per tweet!<i class='fas fa-exclamation-triangle'></i></p>";
+      return $("#error").append(message);
+    } else if (charCount === 140) {
+      const message =
+        "<p class='error'><i class='fas fa-exclamation-triangle'></i>Cannot Submit empty Tweet!<i class='fas fa-exclamation-triangle'></i></p>";
+      return $("#error").append(message);
     }
-    if (charCount === 140) {
-      return alert("Tweet form is empty, cannot submit");
-    }
+
     $.ajax({
       url: `/tweets`,
       method: "POST",
