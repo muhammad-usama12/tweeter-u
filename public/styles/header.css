@@ -4,8 +4,9 @@ The name should be centered below the avatar
 The background-color should be a different colour than the nav and the body*/
 
 .header {
-  height: 635px;
+  height: 700px;
   width: 100%;
+  padding-top: 5em;
   display: flex;
   flex-direction: column;
   justify-content: center;

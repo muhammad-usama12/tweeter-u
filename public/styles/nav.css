@@ -8,13 +8,51 @@ Full width of the viewport
 
 nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  position: fixed;
-  top: 0;
-  height: 100px;
-  width: 100%;
+  align-items: center;
+  height: 120px;
+  background: #4056a1;
+  color: #ffffff;
   padding: 1.5em;
-  color: #fff;
-  background-color: #4056a1;
+  position: fixed;
+  top: 0%;
+  width: 100%;
+}
+nav span {
+  font-family: "Bungee";
+  font-size: 2em;
+}
+
+nav p {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.createTweet {
+  display: flex;
+  padding: 10px;
+  height: 120px;
+  padding: 1.5em;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: flex-end;
+  font-size: 1em;
+}
+
+nav .fas {
+  font-size: 1em;
+}
+
+.createTweet:hover > .arrow {
+  animation: MoveUpDown 1.5s linear infinite;
+  color: red;
+}
+@keyframes MoveUpDown {
+  50% {
+    transform: translateY(-15px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
 }
