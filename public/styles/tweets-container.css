@@ -1,17 +1,3 @@
-/*
-
-Follow these rules/tips when creating the markup. Read these all before starting:
-
-We can consider a tweet to be an article, and there's an HTML5 tag for that!
-You shouldn't use IDs within this component. Why not?
-Consider that the tweet article has a header and a footer. There are HTML5 tags for those too! This way you're not just using plain ol' <div> tags that have no semantic meaning.
-Put in fake/dummy text where needed so that you have some content to visualize.
-Write out the HTML for the component without adding any CSS classes and then as you style it out, decide which CSS classes you really need and where you can simply use tag based selectors
-For example: article.tweet header is a more clear and specific enough selector compared to article.tweet header.tweet-header. This is because we expect to find only one header per tweet and therefore the class tweet-header is repetitive. Avoiding overuse of CSS classes like this is an important practice. If you're unclear on this, speak to a peer or mentor.
-Add the icons in the lower-right corner (you can look for them at Font Awesome)
-
-
-*/
 #tweets-container {
   display: flex;
   flex-direction: column;
@@ -26,18 +12,31 @@ Add the icons in the lower-right corner (you can look for them at Font Awesome)
   border: solid #000;
   border-radius: 7px;
 }
+.tweet header div {
+  display: flex;
+  flex-direction: row;
+  padding-top: 40px;
+  margin-left: 10px;
+}
+.tweet div h4 {
+  margin-left: 15px;
+}
 
 .tweet header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  padding-left: 80px;
+  align-items: center;
+  padding-left: 20px;
   padding-right: 20px;
 }
 
 .tweet p {
   align-self: center;
+  font-family: "Source Sans Pro";
+  font-weight: bold;
   width: 95%;
-  font-size: 18pt;
+  font-size: 14pt;
   padding: 1em;
   border-bottom: solid;
   word-wrap: break-word;
@@ -48,6 +47,7 @@ Add the icons in the lower-right corner (you can look for them at Font Awesome)
   justify-content: space-between;
   height: 3em;
   padding-left: 20px;
+  padding-right: 20px;
   font-weight: 650;
 }
 
@@ -67,10 +67,6 @@ Add the icons in the lower-right corner (you can look for them at Font Awesome)
   color: rgb(255, 145, 0);
 }
 
-.fas {
-  padding-right: 1.5em;
-  padding-left: 0.5em;
-}
 .fa-flag:hover {
   color: rgb(255, 145, 0);
 }
