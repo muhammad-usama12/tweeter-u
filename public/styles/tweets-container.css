@@ -40,6 +40,7 @@ Add the icons in the lower-right corner (you can look for them at Font Awesome)
   font-size: 18pt;
   padding: 1em;
   border-bottom: solid;
+  word-wrap: break-word;
 }
 
 .tweet footer {
