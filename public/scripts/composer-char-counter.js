@@ -1,3 +1,4 @@
+// Character Counter function
 $(document).ready(function () {
   $(".tweet-text").on("input", function () {
     let charCount = $(this).val().length;
@@ -5,9 +6,7 @@ $(document).ready(function () {
     const counter = $(this).parent().find(".counter");
     counter.text(newCount);
 
-    //use jquery to access sibling and children node to get to the output tag (line 70)
-
-    // for counter color change use if/else statement (limit === 140 char)
+    // Character Counter color interpreter
     if (newCount <= 0) {
       counter.addClass("counter-color");
     } else {
