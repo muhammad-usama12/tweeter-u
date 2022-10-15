@@ -1,12 +1,9 @@
-/* new-tweet */
-
 .new-tweet {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Source Sans Pro";
-  font-weight: lighter;
+  font-family: "Source Sans Pro", bold;
 }
 
 form {
