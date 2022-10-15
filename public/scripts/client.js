@@ -6,25 +6,42 @@ $(document).ready(function () {
     return div.innerHTML;
   };
 
+  // Scroll Button Function
+  const toTop = document.querySelector(".toTop");
+  window.addEventListener("scroll", function () {
+    if (window.pageYOffset > 100) {
+      toTop.classList.add("active");
+    } else {
+      toTop.classList.remove("active");
+    }
+  });
+  toTop.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+
+  // Renders Tweet entered by user
   renderTweets = function (tweets) {
     $("#tweets-container").html("");
     for (let tweet of tweets) {
-      // calls createtweet elemnt for each tweet
       const $tweet = createTweetElement(tweet);
-
       $("#tweets-container").prepend($tweet);
-      // takes return value and appends it to the tweets container
     }
   };
 
+  // Create's tweet objects that matches key.value pairs for user data
   createTweetElement = function (tweetObj) {
     const $tweet = $(`
 <article class="tweet">
           <header>
-            <h2><img src="${tweetObj.user.avatars}"></i>${
-      tweetObj.user.name
-    }</h2>
-            <h3 class="user">${tweetObj.user.handle}</h3>
+            <div>
+              <img src="${tweetObj.user.avatars}">
+              <h4> ${tweetObj.user.name}</h4>
+            </div>
+            <h5 class="user">${tweetObj.user.handle}</h5>
           </header>
           <p>${escape(tweetObj.content.text)}</p>
           <footer>
@@ -39,9 +56,17 @@ $(document).ready(function () {
     return $tweet;
   };
 
+  // Resets form after user submits tweet
+  function resetForm() {
+    $("form")[0].reset();
+  }
+
+  // Prevent Default
   $("#new-tweet-sub").on("submit", function (event) {
     event.preventDefault();
     const seralizedData = $(this).serialize();
+
+    // Validation Error Check
     const charCount = Number($(this).parent().find(".counter").val());
     $(".error").remove();
     if (charCount < 0) {
@@ -54,6 +79,9 @@ $(document).ready(function () {
       return $("#error").append(message).hide().slideDown();
     }
 
+    resetForm();
+
+    // AJAX POST Request
     $.ajax({
       url: `/tweets`,
       method: "POST",
@@ -72,6 +100,8 @@ $(document).ready(function () {
         console.log(err);
       });
   });
+
+  // AJAX GET, loads users tweet without reloading the page
 
   const loadTweet = function () {
     $.ajax({
