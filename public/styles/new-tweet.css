@@ -46,3 +46,7 @@ button {
   font-size: 20pt;
   border: solid red;
 }
+
+.counter-color {
+  color: red;
+}
