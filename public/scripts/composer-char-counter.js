@@ -9,9 +9,9 @@ $(document).ready(function () {
 
     // for counter color change use if/else statement (limit === 140 char)
     if (newCount <= 0) {
-      counter.css("color", "red");
+      counter.addClass("counter-color");
     } else {
-      counter.css("color", "dark gray");
+      counter.removeClass("counter-color");
     }
   });
 });
