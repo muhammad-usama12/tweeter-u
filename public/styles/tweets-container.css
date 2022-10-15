@@ -27,16 +27,6 @@ Add the icons in the lower-right corner (you can look for them at Font Awesome)
   border-radius: 7px;
 }
 
-/* .tweet div h2 {
-  display: flex;
-  justify-content: center;
-} */
-
-/* .tweet div h3 {
-  display: flex;
-  padding-right: 1em;
-} */
-
 .tweet header {
   display: flex;
   justify-content: space-between;

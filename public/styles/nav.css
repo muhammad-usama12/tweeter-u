@@ -17,6 +17,7 @@ nav {
   position: fixed;
   top: 0%;
   width: 100%;
+  z-index: 9999;
 }
 nav span {
   font-family: "Bungee";
@@ -25,7 +26,7 @@ nav span {
 
 nav p {
   font-size: 1.5em;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
 }
 
 .createTweet {
@@ -44,7 +45,7 @@ nav .fas {
   font-size: 1em;
 }
 
-.createTweet:hover > .arrow {
+.createTweet > .arrow {
   animation: MoveUpDown 1.5s linear infinite;
   color: red;
 }
@@ -54,5 +55,16 @@ nav .fas {
   }
   50% {
     transform: translateY(10px);
+  }
+}
+
+/* @media only screen and (min-width: 1024px) {
+  
+} */
+
+@media only screen and (min-width: 320px) and (max-width: 1024px) {
+  nav {
+    background-color: #003447;
+    background-image: url("https://www.transparenttextures.com/patterns/argyle.png");
   }
 }

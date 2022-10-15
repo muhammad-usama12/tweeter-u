@@ -17,3 +17,29 @@ The background-color should be a different colour than the nav and the body*/
   background-color: #003447;
   background-image: url("https://www.transparenttextures.com/patterns/argyle.png");
 }
+
+.header {
+  font-family: "Raleway", sans-serif;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1024px) {
+  .header {
+    margin-bottom: 5%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .header {
+    height: 20%;
+    width: 33.3%;
+    margin: 15%;
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+
+  .header:after {
+    background-color: #003447;
+    background-image: url("https://www.transparenttextures.com/patterns/argyle.png");
+    color: aliceblue;
+  }
+}

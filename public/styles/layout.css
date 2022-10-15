@@ -16,12 +16,6 @@ html {
  * Global layout stuff
  */
 
-/*
- 90% of the width of its parent element
-center aligned to the body
-the same background colour as the <body> element
-*/
-
 body {
   display: flex;
   flex-direction: column;
@@ -45,6 +39,17 @@ body {
   justify-content: space-evenly;
   align-self: center;
 }
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+
+@media only screen and (min-width: 1024px) {
+  body {
+    flex-direction: row;
+  }
+  main {
+    padding-top: 9%;
+    margin-top: 5rem;
+    width: 5em;
+  }
+  #tweet-container {
+    flex-direction: row;
+  }
+}
