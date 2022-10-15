@@ -15,6 +15,10 @@ form {
   font-weight: bold;
 }
 
+form label {
+  align-self: center;
+}
+
 textarea:focus {
   background: transparent;
   font-family: "Source Sans Pro";
