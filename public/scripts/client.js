@@ -43,14 +43,15 @@ $(document).ready(function () {
     event.preventDefault();
     const seralizedData = $(this).serialize();
     const charCount = Number($(this).parent().find(".counter").val());
+    $(".error").remove();
     if (charCount < 0) {
       const message =
         "<p class='error'><i class='fas fa-exclamation-triangle'></i>This tweet has reached max characters allowed per tweet!<i class='fas fa-exclamation-triangle'></i></p>";
-      return $("#error").append(message);
+      return $("#error").append(message).hide().slideDown();
     } else if (charCount === 140) {
       const message =
         "<p class='error'><i class='fas fa-exclamation-triangle'></i>Cannot Submit empty Tweet!<i class='fas fa-exclamation-triangle'></i></p>";
-      return $("#error").append(message);
+      return $("#error").append(message).hide().slideDown();
     }
 
     $.ajax({
