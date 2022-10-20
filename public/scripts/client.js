@@ -1,11 +1,4 @@
 $(document).ready(function () {
-  // Cross-Site Scripting Prevention
-  const escape = function (str) {
-    let div = document.createElement("div");
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
-
   // Scroll Button Function
   const toTop = document.querySelector(".toTop");
   window.addEventListener("scroll", function () {
@@ -23,18 +16,60 @@ $(document).ready(function () {
     });
   });
 
-  // Renders Tweet entered by user
-  renderTweets = function (tweets) {
-    $("#tweets-container").html("");
-    for (let tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      $("#tweets-container").prepend($tweet);
-    }
-  };
+  // Prevent Default
+  $("#new-tweet-sub").on("submit", function (event) {
+    event.preventDefault();
+    const seralizedData = $(this).serialize();
 
-  // Create's tweet objects that matches key.value pairs for user data
-  createTweetElement = function (tweetObj) {
-    const $tweet = $(`
+    const form = $(this).parent();
+    const textarea = form.find("textarea");
+    const counter = form.find(".counter");
+    const charCount = textarea.val().length;
+
+    // Validation Error Check
+    $(".error").remove();
+
+    if (charCount > 140) {
+      const message =
+        "<p class='error'><i class='fas fa-exclamation-triangle'></i>This tweet has reached max characters allowed per tweet!<i class='fas fa-exclamation-triangle'></i></p>";
+      return $("#error").append(message).hide().slideDown();
+    }
+
+    if (!charCount) {
+      const message =
+        "<p class='error'><i class='fas fa-exclamation-triangle'></i>Cannot Submit empty Tweet!<i class='fas fa-exclamation-triangle'></i></p>";
+      return $("#error").append(message).hide().slideDown();
+    }
+
+    // AJAX POST Request
+    $.ajax({
+      url: `/tweets`,
+      method: "POST",
+      data: seralizedData,
+    })
+      .then(function () {
+        $("form")[0].reset();
+        counter.text(140);
+        loadTweets();
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  });
+
+  loadTweets();
+});
+
+// Cross-Site Scripting Prevention
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+// Create's tweet objects that matches key.value pairs for user data
+createTweetElement = function (tweetObj) {
+  const $tweet = $(`
 <article class="tweet">
           <header>
             <div>
@@ -53,68 +88,29 @@ $(document).ready(function () {
           </footer>
         </article>
         `);
-    return $tweet;
-  };
+  return $tweet;
+};
 
-  // Resets form after user submits tweet
-  function resetForm() {
-    $("form")[0].reset();
+// Renders Tweet entered by user
+renderTweets = function (tweets) {
+  $("#tweets-container").html("");
+  for (let tweet of tweets) {
+    const $tweet = createTweetElement(tweet);
+    $("#tweets-container").prepend($tweet);
   }
+};
 
-  // Prevent Default
-  $("#new-tweet-sub").on("submit", function (event) {
-    event.preventDefault();
-    const seralizedData = $(this).serialize();
-
-    // Validation Error Check
-    const charCount = Number($(this).parent().find(".counter").val());
-    $(".error").remove();
-    if (charCount < 0) {
-      const message =
-        "<p class='error'><i class='fas fa-exclamation-triangle'></i>This tweet has reached max characters allowed per tweet!<i class='fas fa-exclamation-triangle'></i></p>";
-      return $("#error").append(message).hide().slideDown();
-    } else if (charCount === 140) {
-      const message =
-        "<p class='error'><i class='fas fa-exclamation-triangle'></i>Cannot Submit empty Tweet!<i class='fas fa-exclamation-triangle'></i></p>";
-      return $("#error").append(message).hide().slideDown();
-    }
-
-    resetForm();
-
-    // AJAX POST Request
-    $.ajax({
-      url: `/tweets`,
-      method: "POST",
-      data: seralizedData,
+// AJAX GET, loads users tweet without reloading the page
+const loadTweets = function () {
+  $.ajax({
+    url: `/tweets`,
+    method: "GET",
+  })
+    .then(function (result) {
+      console.log(result);
+      renderTweets(result);
     })
-      .then(function () {
-        $.ajax({
-          url: `/tweets`,
-          method: "GET",
-        }).then(function (result) {
-          console.log(result);
-          renderTweets(result);
-        });
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  });
-
-  // AJAX GET, loads users tweet without reloading the page
-
-  const loadTweet = function () {
-    $.ajax({
-      url: `/tweets`,
-      method: "GET",
-    })
-      .then(function (result) {
-        console.log(result);
-        renderTweets(result);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  };
-  loadTweet();
-});
+    .catch(function (err) {
+      console.log(err);
+    });
+};
