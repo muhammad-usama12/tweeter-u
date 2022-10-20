@@ -7,7 +7,7 @@ $(document).ready(function () {
     counter.text(newCount);
 
     // Character Counter color interpreter
-    if (newCount <= 0) {
+    if (newCount < 0) {
       counter.addClass("counter-color");
     } else {
       counter.removeClass("counter-color");
